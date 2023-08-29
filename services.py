@@ -1,5 +1,6 @@
 import requests
 import sett
+import documents
 import json
 import time
 
@@ -167,13 +168,13 @@ def sticker_Message(number, sticker_id):
 def get_media_id(media_name , media_type):
     media_id = ""
     if media_type == "sticker":
-        media_id = sett.stickers.get(media_name, None)
+        media_id = documents.stickers.get(media_name, None)
     elif media_type == "image":
-        media_id = sett.images.get(media_name, None)
+        media_id = documents.images.get(media_name, None)
     elif media_type == "video":
-        media_id = sett.videos.get(media_name, None)
+        media_id = documents.videos.get(media_name, None)
     elif media_type == "audio":
-        media_id = sett.audio.get(media_name, None)
+        media_id = documents.audio.get(media_name, None)
     return media_id
 
 def replyReaction_Message(number, messageId, emoji):
@@ -231,7 +232,7 @@ def administrar_chatbot(text,number, messageId, name):
         body = "Aqui esta el PDF con el calendario academico 2023"
         footer = "@UTNRosario"
 
-        document = document_Message(number, sett.calendario_academico_23, "Listo 👍🏻", "calendario_academico_2023.pdf")
+        document = document_Message(number, documents.calendario_academico_23, "Listo 👍🏻", "calendario_academico_2023.pdf")
         list.append(document)
         
     elif "plan de estudios" in text:
@@ -246,39 +247,39 @@ def administrar_chatbot(text,number, messageId, name):
     elif "sist. de inf." in text:
         print('pdf isi')
 
-        document = document_Message(number, sett.plan_estudio_isi_08, "Plan de estudio 2008 Ingenieria en Sistemas de Informacion", "Plan_estudio_isi_08.pdf")
+        document = document_Message(number, documents.plan_estudio_isi_08, "Plan de estudio 2008 Ingenieria en Sistemas de Informacion", "Plan_estudio_isi_08.pdf")
         list.append(document)
-        document = document_Message(number, sett.plan_estudio_isi_23, "Plan de estudio 2023 Ingenieria en Sistemas de Informacion", "Plan_estudio_isi_23.pdf")
+        document = document_Message(number, documents.plan_estudio_isi_23, "Plan de estudio 2023 Ingenieria en Sistemas de Informacion", "Plan_estudio_isi_23.pdf")
         list.append(document)
         
     elif "ing. quimica" in text:
         print('pdf iq')
 
-        document = document_Message(number, sett.plan_estudio_iq_94, "Plan de estudio 1994 Ingenieria Quimica", "Plan_estudio_iq_94.pdf")
+        document = document_Message(number, documents.plan_estudio_iq_94, "Plan de estudio 1994 Ingenieria Quimica", "Plan_estudio_iq_94.pdf")
         list.append(document)
-        document = document_Message(number, sett.plan_estudio_iq_23, "Plan de estudio 2023 Ingenieria Quimica", "Plan_estudio_iq_23.pdf")
+        document = document_Message(number, documents.plan_estudio_iq_23, "Plan de estudio 2023 Ingenieria Quimica", "Plan_estudio_iq_23.pdf")
         list.append(document)
         
     elif "ing. civil" in text:
         print('pdf ic')
 
-        document = document_Message(number, sett.plan_estudio_ic_94, "Plan de estudio 1994 Ingenieria Civil", "Plan_estudio_ic_94.pdf")
+        document = document_Message(number, documents.plan_estudio_ic_94, "Plan de estudio 1994 Ingenieria Civil", "Plan_estudio_ic_94.pdf")
         list.append(document)
-        document = document_Message(number, sett.plan_estudio_iq_23, "Plan de estudio 2023 Ingenieria Civil", "Plan_estudio_ic_23.pdf")
+        document = document_Message(number, documents.plan_estudio_iq_23, "Plan de estudio 2023 Ingenieria Civil", "Plan_estudio_ic_23.pdf")
         list.append(document)
         
     elif "ing. electrica" in text:
         print('pdf ie')
 
-        document = document_Message(number, sett.plan_estudio_ie_94, "Plan de estudio 1994 Ingenieria Electrica", "Plan_estudio_ie_94.pdf")
+        document = document_Message(number, documents.plan_estudio_ie_94, "Plan de estudio 1994 Ingenieria Electrica", "Plan_estudio_ie_94.pdf")
         list.append(document)
-        document = document_Message(number, sett.plan_estudio_ie_23, "Plan de estudio 2023 Ingenieria Electrica", "Plan_estudio_ie_23.pdf")
+        document = document_Message(number, documents.plan_estudio_ie_23, "Plan de estudio 2023 Ingenieria Electrica", "Plan_estudio_ie_23.pdf")
         list.append(document)
         
     elif "ing. mecanica" in text:
         print('pdf im')
 
-        document = document_Message(number, sett.plan_estudio_im_23, "Plan de estudio 2023 Ingenieria Mecanica", "Plan_estudio_im_23.pdf")
+        document = document_Message(number, documents.plan_estudio_im_23, "Plan de estudio 2023 Ingenieria Mecanica", "Plan_estudio_im_23.pdf")
         list.append(document)
         
     elif "horarios" in text:
