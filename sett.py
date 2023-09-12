@@ -1,5 +1,0 @@
-token = 'spedemonte'
-
-whatsapp_token = 'EAALEtTdgQR8BO0KWUAyP5JRJ7tyqPEDQMZBR0DW3YcKmpjZCGz9xdZCr0or7XpyZCS5lghNm3VYml1F3vAa9BTeIVaJ3DtUKGN7njHsDN6DeHlTgKYFLvVoQ3TxtF90Y4jRLuLo1aiJGPx72JVouIlAcyFAWiyyHsfVC8c9ZBynH4cWbBfkTmIWLZBJYQ4gSAf'
-
-whatsapp_url = 'https://graph.facebook.com/v17.0/107225852445336/messages'
