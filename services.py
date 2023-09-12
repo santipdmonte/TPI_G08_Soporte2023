@@ -284,8 +284,45 @@ def administrar_chatbot(text,number, messageId, name):
         
     elif "horarios" in text:
         print('Horarios')
-        textMessage = text_message(number,"Link de las clases y consultas") 
-        list.append(textMessage)
+        body = "Seleccione el año de cursado."
+        footer = "@UTNRosario"
+        options = ["1.º año", "2.º año", "3.º año", "4.º año", "5.º año"]
+
+        listReplyData = listReply_Message(number, options, body, footer, "sed2",messageId)
+        list.append(listReplyData)
+      
+    elif "1.º año" in text:
+        text = "*Horarios Primer Año*:\nhttps://docs.google.com/spreadsheets/d/1F5a7XU02qxdlo-Ejk7JzJSEKSiCbidQs/edit#gid=372359609"
+        
+        list.append(text_message(number,text))
+        
+    elif "2.º año" in text:
+        text = "*Horarios Segundo Año*:\nhttps://docs.google.com/spreadsheets/d/17nAIjV29lJGfbQbqG0eCX-dHpn-MKRBN/edit#gid=418492156"
+        list.append(text_message(number,text))
+        
+        text = "*Electivas Segundo Año*:\nhttps://docs.google.com/spreadsheets/d/1vG_qQwl366P2kRWUr1tScy99xvVsxt-L/edit?rtpof=true&sd=true#gid=1430635041"
+        list.append(text_message(number,text))
+    
+    elif "3.º año" in text:
+        text = "*Horarios Tercer Año*:\nhttps://docs.google.com/spreadsheets/d/1v_-DEmZM6v3e_DOqDH_KmBpmsboNU2Xu/edit?usp=share_link&ouid=112405360630548424739&rtpof=true&sd=true"
+        list.append(text_message(number,text))
+        
+        text = "*Electivas Tercer Año*:\nhttps://docs.google.com/spreadsheets/d/1LOA6lX3pBoSIPR_T4nOEE5wnVyrNbA2G/edit?rtpof=true&sd=true#gid=611337920"
+        list.append(text_message(number,text))
+    
+    elif "4.º año" in text:
+        text = "*Horarios Cuarto Año*:\nhttps://docs.google.com/spreadsheets/d/1arpNIGkjwgJ96e1OM0CiHJkNjwphvYCz/edit?rtpof=true&sd=true"
+        list.append(text_message(number,text))
+        
+        text = "*Electivas Cuarto Año*:\nhttps://docs.google.com/spreadsheets/d/1arpNIGkjwgJ96e1OM0CiHJkNjwphvYCz/edit?rtpof=true&sd=true#gid=1473163369"
+        list.append(text_message(number,text))
+    
+    elif "5.º año" in text:
+        text = "*Horarios Cuarto Año*:\nhttps://docs.google.com/spreadsheets/d/15U7ZblxXeVqzLUMd0NAQic8kFxB6oW0P/edit#gid=1519933296"
+        list.append(text_message(number,text))
+        
+        text = "*Electivas Segundo Año*:\nhttps://docs.google.com/spreadsheets/d/14EaFHnbqcDu8WZu1gqy0lQ9FbbAFUypf/edit#gid=36529863"
+        list.append(text_message(number,text))
         
     else :
         body = "¡Hola! 👋 Bienvenido a UTN Regional Rosario. Selecciona una opcion para continuar"
