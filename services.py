@@ -235,6 +235,20 @@ def send_location(number, latitude, longitude, location_name, adress):
     return data
   
     
+#  Despedida        
+def despedida(number, messageId):
+  
+    body = "¡Gracias! Para seguir utilizando el bot seleccione una opcion."
+    footer = ""
+    options = ["Calendario academico", "Planes de estudios", "Horarios", "Como Llego?", "Otros"]
+
+    listReplyData = listReply_Message(number, options, body, footer, "sed2",messageId)
+    print(listReplyData)
+
+    return listReplyData
+    
+
+# Logica del Bot
 def administrar_chatbot(text,number, messageId, name):
     text = text.lower() #mensaje que envio el usuario
     list = []
@@ -244,6 +258,7 @@ def administrar_chatbot(text,number, messageId, name):
     list.append(markRead)
 
         
+    # Calendario Academico     
     if "calendario academico" in text:
         print('calendario academico')
         body = "Aqui esta el PDF con el calendario academico 2023"
@@ -251,54 +266,64 @@ def administrar_chatbot(text,number, messageId, name):
 
         document = document_Message(number, documents.calendario_academico_23, "Listo 👍🏻", "calendario_academico_2023.pdf")
         list.append(document)
+        list.append(despedida(number, messageId))
+    
         
-    elif "plan de estudios" in text:
+    # Planes de Estudio     
+    elif "planes de estudios" in text:
         body = "Seleccione la carrera."
         footer = "@UTNRosario"
         options = ["Ing. en Sist. de inf.", "Ing. Quimica", "Ing. Civil", "Ing. Electrica", "Ing. Mecanica"]
-
+        
         listReplyData = listReply_Message(number, options, body, footer, "sed2",messageId)
-
         list.append(listReplyData)
         
     elif "sist. de inf." in text:
-        print('pdf isi')
-
         document = document_Message(number, documents.plan_estudio_isi_08, "Plan de estudio 2008 Ingenieria en Sistemas de Informacion", "Plan_estudio_isi_08.pdf")
         list.append(document)
+        
         document = document_Message(number, documents.plan_estudio_isi_23, "Plan de estudio 2023 Ingenieria en Sistemas de Informacion", "Plan_estudio_isi_23.pdf")
         list.append(document)
         
+        list.append(despedida(number, messageId))
+        
     elif "ing. quimica" in text:
-        print('pdf iq')
-
         document = document_Message(number, documents.plan_estudio_iq_94, "Plan de estudio 1994 Ingenieria Quimica", "Plan_estudio_iq_94.pdf")
         list.append(document)
+        
         document = document_Message(number, documents.plan_estudio_iq_23, "Plan de estudio 2023 Ingenieria Quimica", "Plan_estudio_iq_23.pdf")
         list.append(document)
         
+        list.append(despedida(number, messageId))
+        
     elif "ing. civil" in text:
-        print('pdf ic')
-
         document = document_Message(number, documents.plan_estudio_ic_94, "Plan de estudio 1994 Ingenieria Civil", "Plan_estudio_ic_94.pdf")
         list.append(document)
+        
         document = document_Message(number, documents.plan_estudio_iq_23, "Plan de estudio 2023 Ingenieria Civil", "Plan_estudio_ic_23.pdf")
         list.append(document)
         
+        list.append(despedida(number, messageId))
+        
     elif "ing. electrica" in text:
-        print('pdf ie')
-
-        document = document_Message(number, documents.plan_estudio_ie_94, "Plan de estudio 1994 Ingenieria Electrica", "Plan_estudio_ie_94.pdf")
+        document = document_Message(number, documents.plan_estudio_ie_95, "Plan de estudio 1995 Ingenieria Electrica", "Plan_estudio_ie_95.pdf")
         list.append(document)
+
         document = document_Message(number, documents.plan_estudio_ie_23, "Plan de estudio 2023 Ingenieria Electrica", "Plan_estudio_ie_23.pdf")
         list.append(document)
         
+        list.append(despedida(number, messageId))
+        
     elif "ing. mecanica" in text:
-        print('pdf im')
-
+        document = document_Message(number, documents.plan_estudio_im_94, "Plan de estudio 1994 Ingenieria Mecanica", "Plan_estudio_im_94.pdf")
+        list.append(document)
         document = document_Message(number, documents.plan_estudio_im_23, "Plan de estudio 2023 Ingenieria Mecanica", "Plan_estudio_im_23.pdf")
         list.append(document)
         
+        list.append(despedida(number, messageId))
+        
+        
+#   Horarios
     elif "horarios" in text:
         print('Horarios')
         body = "Seleccione el año de cursado."
@@ -307,40 +332,48 @@ def administrar_chatbot(text,number, messageId, name):
 
         listReplyData = listReply_Message(number, options, body, footer, "sed2",messageId)
         list.append(listReplyData)
+        
       
     elif "1.º año" in text:
-        text = "*Horarios Primer Año*:\nhttps://docs.google.com/spreadsheets/d/1F5a7XU02qxdlo-Ejk7JzJSEKSiCbidQs/edit#gid=372359609"
-        
+        text = "*Horarios 1.º Año*:\nhttps://docs.google.com/spreadsheets/d/1F5a7XU02qxdlo-Ejk7JzJSEKSiCbidQs/edit#gid=372359609"
         list.append(text_message(number,text))
+        list.append(despedida(number, messageId))
         
     elif "2.º año" in text:
-        text = "*Horarios Segundo Año*:\nhttps://docs.google.com/spreadsheets/d/17nAIjV29lJGfbQbqG0eCX-dHpn-MKRBN/edit#gid=418492156"
+        text = "*Horarios 2.º Año*:\nhttps://docs.google.com/spreadsheets/d/17nAIjV29lJGfbQbqG0eCX-dHpn-MKRBN/edit#gid=418492156"
         list.append(text_message(number,text))
         
-        text = "*Electivas Segundo Año*:\nhttps://docs.google.com/spreadsheets/d/1vG_qQwl366P2kRWUr1tScy99xvVsxt-L/edit?rtpof=true&sd=true#gid=1430635041"
+        text = "*Horarios Electivas 2.º Año*:\nhttps://docs.google.com/spreadsheets/d/1vG_qQwl366P2kRWUr1tScy99xvVsxt-L/edit?rtpof=true&sd=true#gid=1430635041"
         list.append(text_message(number,text))
-    
+        list.append(despedida(number, messageId))
+
     elif "3.º año" in text:
-        text = "*Horarios Tercer Año*:\nhttps://docs.google.com/spreadsheets/d/1v_-DEmZM6v3e_DOqDH_KmBpmsboNU2Xu/edit?usp=share_link&ouid=112405360630548424739&rtpof=true&sd=true"
+        text = "*Horarios 3.º Año*:\nhttps://docs.google.com/spreadsheets/d/1v_-DEmZM6v3e_DOqDH_KmBpmsboNU2Xu/edit?usp=share_link&ouid=112405360630548424739&rtpof=true&sd=true"
         list.append(text_message(number,text))
         
-        text = "*Electivas Tercer Año*:\nhttps://docs.google.com/spreadsheets/d/1LOA6lX3pBoSIPR_T4nOEE5wnVyrNbA2G/edit?rtpof=true&sd=true#gid=611337920"
+        text = "*Horarios Electivas 3.º Año*:\nhttps://docs.google.com/spreadsheets/d/1LOA6lX3pBoSIPR_T4nOEE5wnVyrNbA2G/edit?rtpof=true&sd=true#gid=611337920"
         list.append(text_message(number,text))
-    
+        list.append(despedida(number, messageId))
+
+        
     elif "4.º año" in text:
-        text = "*Horarios Cuarto Año*:\nhttps://docs.google.com/spreadsheets/d/1arpNIGkjwgJ96e1OM0CiHJkNjwphvYCz/edit?rtpof=true&sd=true"
+        text = "*Horarios 4.º Año*:\nhttps://docs.google.com/spreadsheets/d/1arpNIGkjwgJ96e1OM0CiHJkNjwphvYCz/edit?rtpof=true&sd=true"
         list.append(text_message(number,text))
         
-        text = "*Electivas Cuarto Año*:\nhttps://docs.google.com/spreadsheets/d/1arpNIGkjwgJ96e1OM0CiHJkNjwphvYCz/edit?rtpof=true&sd=true#gid=1473163369"
+        text = "*Horarios Electivas 4.º Año*:\nhttps://docs.google.com/spreadsheets/d/1arpNIGkjwgJ96e1OM0CiHJkNjwphvYCz/edit?rtpof=true&sd=true#gid=1473163369"
         list.append(text_message(number,text))
+        list.append(despedida(number, messageId))
     
     elif "5.º año" in text:
-        text = "*Horarios Cuarto Año*:\nhttps://docs.google.com/spreadsheets/d/15U7ZblxXeVqzLUMd0NAQic8kFxB6oW0P/edit#gid=1519933296"
+        text = "*Horarios 5.º Año*:\nhttps://docs.google.com/spreadsheets/d/15U7ZblxXeVqzLUMd0NAQic8kFxB6oW0P/edit#gid=1519933296"
         list.append(text_message(number,text))
         
-        text = "*Electivas Segundo Año*:\nhttps://docs.google.com/spreadsheets/d/14EaFHnbqcDu8WZu1gqy0lQ9FbbAFUypf/edit#gid=36529863"
+        text = "*Horarios Electivas 5.º Año*:\nhttps://docs.google.com/spreadsheets/d/14EaFHnbqcDu8WZu1gqy0lQ9FbbAFUypf/edit#gid=36529863"
         list.append(text_message(number,text))
-
+        list.append(despedida(number, messageId))
+        
+   
+#  Como llego? Ubicacion con mapa
     elif "como llego?" in text:
         longitude = '-32.9544144'
         latitude = '-60.6436580'
@@ -348,18 +381,49 @@ def administrar_chatbot(text,number, messageId, name):
         adress = "2000, Zeballos 1341, S2000 Rosario, Santa Fe"
       
         list.append(send_location(number, longitude, latitude, location_name, adress))
+
+        list.append(despedida(number, messageId))
         
+        
+#   Otras Opciones
+    elif "otros" in text:
+        body = "Selecciona una opcion para continuar"
+        footer = "@UTNRosario"
+        options = ["Dudas Sobre Plan 2023", "Mails Profesores", "Apuntes Digitales"]
+
+        listReplyData = listReply_Message(number, options, body, footer, "sed2",messageId)
+        print(listReplyData)
+
+        list.append(listReplyData)
+      
+    elif "dudas sobre plan 2023" in text:  
+        document = document_Message(number, documents.dudas_plan_2023, "Dudas Plan 2023", "Dudas_Plan_2023.pdf")
+        list.append(document)
+        list.append(despedida(number, messageId))
+    
+    elif "mails profesores" in text:
+        text = "*Mails Profesores:*\nhttps://gradienteutn.wordpress.com/mails-de-profesores/"
+        list.append(text_message(number,text))
+        list.append(despedida(number, messageId))
+
+        
+    elif "apuntes digitales" in text:
+        text = "*Apuntes Digitales:*\nhttps://gradienteutn.wordpress.com/apuntes-digitales/"
+        list.append(text_message(number,text))
+        list.append(despedida(number, messageId))
+        
+        
+#   Bienvendia
     else :
         body = "¡Hola! 👋 Bienvenido a UTN Regional Rosario. Selecciona una opcion para continuar"
         footer = "@UTNRosario"
-        options = ["Calendario academico", "Plan de estudios", "Horarios"]
+        options = ["Calendario academico", "Planes de estudios", "Horarios Ing. Sistemas", "Como Llego?", "Otros"]
 
         listReplyData = listReply_Message(number, options, body, footer, "sed2",messageId)
+        print(listReplyData)
 
         list.append(listReplyData)
 
     for item in list:
         enviar_mensaje_whatsapp(item)
         
-        
-    
