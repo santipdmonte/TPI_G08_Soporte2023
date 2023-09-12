@@ -1,5 +1,5 @@
 import requests
-import sett
+# import sett2
 import documents
 import json
 import time
