@@ -216,6 +216,23 @@ def markRead_Message(messageId):
         }
     )
     return data
+
+def send_location(number, latitude, longitude, location_name, adress):
+    data = json.dumps(
+        {
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": number,
+            "type": "location",
+            "location": {
+                "latitude": latitude,
+                "longitude": longitude,
+                "name": location_name,
+                "address": adress
+            }
+        }
+    )
+    return data
   
     
 def administrar_chatbot(text,number, messageId, name):
@@ -323,6 +340,14 @@ def administrar_chatbot(text,number, messageId, name):
         
         text = "*Electivas Segundo Año*:\nhttps://docs.google.com/spreadsheets/d/14EaFHnbqcDu8WZu1gqy0lQ9FbbAFUypf/edit#gid=36529863"
         list.append(text_message(number,text))
+
+    elif "como llego?" in text:
+        longitude = '-32.9544144'
+        latitude = '-60.6436580'
+        location_name = "UTN Rosario"
+        adress = "2000, Zeballos 1341, S2000 Rosario, Santa Fe"
+      
+        list.append(send_location(number, longitude, latitude, location_name, adress))
         
     else :
         body = "¡Hola! 👋 Bienvenido a UTN Regional Rosario. Selecciona una opcion para continuar"
